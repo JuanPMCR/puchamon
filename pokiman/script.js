@@ -26,13 +26,15 @@ function changePokemon(pokemon) {
     let img = document.getElementById("imgPokemon");
     let ability = document.getElementById("abilitiesPokemon");
     let moves = document.getElementById("movesPokemon");
+    let stats = document.getElementById("statsPokemon");
 
     name.innerHTML = pokemon.name;
-    type.innerHTML = pokemon.types.map(t => t.type.name).join(" | ");
+    type.innerHTML = pokemon.types.map(t => t.type.name).join("<br>");
     height.innerHTML = pokemon.height + " mt";
     wei.innerHTML = pokemon.weight + " kg";
     id.innerHTML = pokemon.id;
     ability.innerHTML = pokemon.abilities.map(abil => abil.ability.name).join(" | ");
     moves.innerHTML = pokemon.moves.map(mov => mov.move.name).join(" | ");
     img.src = pokemon.sprites.front_default;
+    stats.innerHTML = pokemon.stats.map(stat => stat.stat.name + ": " + stat.base_stat).join("<br>");
 }

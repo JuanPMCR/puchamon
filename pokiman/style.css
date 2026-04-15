@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', 'Pokémon', sans-serif;
+    background: linear-gradient(135deg, #052b4f 0%, #392356 50%, #143533 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+/* Contenedor principal */
+.search-container {
+    background: linear-gradient(135deg, #f10606c9, #47d7d2);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+    border: 5px solid #f10606c9;
+    min-width: 300px;
+}
+
+/* Input de búsqueda */
+#buscarPokemon {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: #FFFFFF;
+    color: #333;
+    margin-bottom: 10px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#buscarPokemon::placeholder {
+    color: #999;
+}
+
+#buscarPokemon:focus {
+    outline: none;
+    box-shadow: 0 0 10px #d71f1fc9, inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Botón de búsqueda */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #f10606c9;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #f10606c9, #ff0000ef);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Contenedor de información del Pokémon */
+#pokemon {
+    background: linear-gradient(135deg, #f10606c9, #da3f3fc9 );
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    border: 8px solid #f14b4bc9;
+    min-width: 350px;
+    max-width: 500px;
+    color: #FFFFFF;
+}
+
+/* Imagen del Pokémon */
+#imgPokemon {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    background: rgba(0, 0, 0, 0.481);
+    border-radius: 15px;
+    display: block;
+    margin: 0 auto 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Secciones de información */
+#pokemon div {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 4px solid #f10606c9;
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.2), transparent);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#pokemon div:hover {
+    background: linear-gradient(90deg, white, transparent);
+    border-left: 6px solid #f10606c9;
+}
+
+/* Títulos (h2) */
+#pokemon h2 {
+    font-size: 1.1em;
+    color: Black;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* Párrafos con información */
+#pokemon p {
+    font-size: 1em;
+    color: #333;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    body::before {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .search-container {
+        min-width: 280px;
+        padding: 20px;
+    }
+
+    #pokemon {
+        min-width: 280px;
+        padding: 20px;
+    }
+
+    #imgPokemon {
+        width: 200px;
+        height: 200px;
+    }
+
+    #pokemon h2 {
+        font-size: 0.95em;
+    }
+
+    #pokemon p {
+        font-size: 0.9em;
+    }
+}
