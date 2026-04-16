@@ -19,6 +19,18 @@ function searchPokemon() {
     fetchingPokemon(busq);
 }
 
+function Shiny() {
+    if (!currentPokemon) return;
+    let img = document.getElementById("imgPokemon");
+    img.src = currentPokemon.sprites.front_shiny;
+}
+
+function normal() {
+    if (!currentPokemon) return;
+    let img = document.getElementById("imgPokemon");
+    img.src = currentPokemon.sprites.front_default;
+}
+
 function changePokemon(pokemon) {
     currentPokemon = pokemon;
     let name = document.getElementById("nomPokemon");
