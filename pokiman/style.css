@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Arial', 'Pokémon', sans-serif;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
     background: linear-gradient(135deg, #052b4f 0%, #392356 50%, #143533 100%);
     background-attachment: fixed;
     min-height: 100vh;
