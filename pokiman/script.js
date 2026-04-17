@@ -72,7 +72,7 @@ async function fetchingPokemonMov(moves) {
 
 function searchMoves() {
     if (!currentPokemon) {
-        document.getElementById("movesDetails").innerHTML = "nigga";
+        document.getElementById("movesDetails").innerHTML = "No se encontro";
         return;
     }
 
@@ -100,3 +100,38 @@ function changeMoves(moves) {
                             "prioridad: " + moves.priority + "<br>" +
                             "Precision: " + moves.accuracy;
 }
+
+//items
+async function fetchingPokemonItem(items) {
+    fetch("https://pokeapi.co/api/v2/item/{id or name}/" + items).then(response => {
+        if (!response.ok) {
+        throw new Error("Error");
+    }
+    return response.json();
+    }).then(data => {
+        console.log(data);
+        changeItems(data);
+    }).catch(error => {
+        console.error("Error fetching", error);
+    });
+
+}
+
+function searchItems() {
+    if (!currentPokemon) {
+            document.getElementById("itemsDetails").innerHTML = "No se encontro";
+            return;
+        }
+
+        let busq = document.getElementById("buscarItem").value.toLowerCase();
+        if (!busq) {
+            document.getElementById("itemsDetails").innerHTML = "Ingresa un item para buscar.";
+            return;
+        }
+
+function changeItems(items) {
+let itemDetails = document.getElementById("itemsDetails");
+itemDetails.innerHTML = "Nombre: " + items.name + "<br>" +
+                        "Descripción: " + items.effect_entries[0].effect + "<br>" +
+                        "Precio: " + items.price;
+}};

@@ -2,7 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css">
-        <title>Pokedex </title>
+        <title>Puchamon - Menú Principal</title>
     </head>
     <body>
         <div>
@@ -11,8 +11,6 @@
         </div>
         <div id="pokemon">
             <img id="imgPokemon">
-            <button onclick="normal()">Normal</button> <button onclick="Shiny()">Shiny</button>
-
             <div>
                 <h2>Nombre: </h2>
                 <p id="nomPokemon"></p>
@@ -52,5 +50,13 @@
             </div>
         </div>
     </body>
-    <script src="script.js"></script>
+    <script>
+        function irAPokedex() {
+            window.location.href = "pokedex.html";
+        }
+
+        function irAOtra() {
+            window.location.href = "otra.html";
+        }
+    </script>
 </html>
