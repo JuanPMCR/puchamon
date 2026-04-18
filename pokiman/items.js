@@ -27,9 +27,9 @@ async function changeItem(item) {
     let attribute = document.getElementById("attributesItem");
     let category = document.getElementById("categoryItem");
     
-    name.textContent = item.name;
-    id.textContent = item.id;
+    name.textContent = item.name || "N/A";
+    id.textContent = item.id || "N/A";
     cost.textContent = item.cost || "N/A";
-    attribute.textContent = item.attributes[0]?.attribute.name || "N/A";
-    category.textContent = item.category.name;
+    attribute.textContent = item.attributes?.length > 0 ? item.attributes.map(a => a.name).join(", ") : "N/A";
+    category.textContent = item.category?.name || item.category || "N/A";
 }
