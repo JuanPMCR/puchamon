@@ -22,18 +22,6 @@ function searchPokemon() {
     fetchingPokemon(busq);
 }
 
-function Shiny() {
-    if (!currentPokemon) return;
-    let img = document.getElementById("imgPokemon");
-    img.src = currentPokemon.sprites.front_shiny;
-}
-
-function normal() {
-    if (!currentPokemon) return;
-    let img = document.getElementById("imgPokemon");
-    img.src = currentPokemon.sprites.front_default;
-}
-
 async function changePokemon(pokemon) {
     currentPokemon = pokemon;
     let name = document.getElementById("nomPokemon");
@@ -66,7 +54,19 @@ async function changePokemon(pokemon) {
     await fetchEvolutions(pokemon.species.url);
 }
 
-//shiny y normal
+//shiny y 
+
+function Shiny() {
+    if (!currentPokemon) return;
+    let img = document.getElementById("imgPokemon");
+    img.src = currentPokemon.sprites.front_shiny;
+}
+
+function normal() {
+    if (!currentPokemon) return;
+    let img = document.getElementById("imgPokemon");
+    img.src = currentPokemon.sprites.front_default;
+}
 
 function toggleShiny() {
     if (!currentPokemon) return;
