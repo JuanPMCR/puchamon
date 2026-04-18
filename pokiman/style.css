@@ -84,8 +84,11 @@ button:active {
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     border: 8px solid #f14b4bc9;
     min-width: 350px;
-    max-width: 500px;
+    max-width: 800px;
     color: #FFFFFF;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 /* Imagen del Pokémon */
@@ -149,6 +152,7 @@ button:active {
     #pokemon {
         min-width: 280px;
         padding: 20px;
+        
     }
 
     #imgPokemon {
@@ -184,6 +188,15 @@ button:active {
     color: #333;
     margin-bottom: 10px;
     box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.moves-container {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 5px;
+    background: rgba(255,255,255,0.05);
 }
 
 #movesPokemon {
@@ -225,4 +238,25 @@ button:active {
 
 #movesPokemon .move-item.active .move-info {
     display: block;
+}
+
+.evolution-item {
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.evolution-item:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.evolutions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
 }
