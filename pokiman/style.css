@@ -16,6 +16,14 @@ body {
     padding: 20px;
 }
 
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 
 /* Contenedor principal */
 .search-container {
@@ -149,6 +157,10 @@ button:active {
         padding: 20px;
     }
 
+    .content-wrapper {
+        flex-direction: column;
+    }
+
     #pokemon {
         min-width: 280px;
         padding: 20px;
@@ -216,14 +228,14 @@ button:active {
 
 #movesPokemon .move-item:hover {
     background: rgba(255,255,255,0.38);
-    transform: translateX(2px);
+    transform: translateY(-2px);
 }
 
 #movesPokemon .move-name {
-    display: block;
+    display: inline;
     font-weight: bold;
     color: #08141d;
-}
+}block
 
 #movesPokemon .move-info {
     display: none;
@@ -259,4 +271,24 @@ button:active {
     flex-direction: column;
     gap: 10px;
     align-items: center;
+}
+
+#movimientos-section {
+    background: linear-gradient(135deg, #f10606c9, #da3f3fc9 );
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    border: 8px solid #f14b4bc9;
+    min-width: 350px;
+    max-width: 800px;
+    color: #FFFFFF;
+}
+
+#movimientos-section h2 {
+    font-size: 1.1em;
+    color: Black;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
 }
