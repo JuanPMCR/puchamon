@@ -52,13 +52,23 @@ async function changePokemon(pokemon) {
     height.innerHTML = pokemon.height + " ft";
     wei.innerHTML = pokemon.weight + " lbs";
     id.innerHTML = pokemon.id;
-    ability.innerHTML = pokemon.abilities.map(abil => abil.ability.name).join(" | ");
-    moves.innerHTML = pokemon.moves.map(mov => `
-        <li class="move-item" onclick="showMoveDetails(this, '${mov.move.name}')">
+    ability.innerHTML = pokemon.abilities.map(abil => `<li>${abil.ability.name}</li>`).join("");
+
+
+    /*
+    basicamente se recorre el array de los mov del puchamon y por cada uno se crea un li con el nombre del movimiento
+    y un div donde con la funcion de abajo se le van a meter los detalles y finalmente el onclick es para que cuando lo clickes
+    se active la funcion de showmovesdetes, luego detaildiv es el que va poner la info en el div del li. Con item se refiere al li
+    y queryselector es para buscar el div dentro del li que tenga la clase move-info, entonces se hace el fetch
+    del movimiento y esa info se mete en el detaildiv, que es le div del li y se agrega la clase active para que se vea la info
+    al revisar que este con active si se vuelve a clikear se la quita y la informcaion se borra
+    */
+   
+    moves.innerHTML = pokemon.moves.map(mov => 
+        `<li class="move-item" onclick="showMoveDetails(this, '${mov.move.name}')">
             <span class="move-name">${mov.move.name}</span>
             <div class="move-info"></div>
-        </li>
-    `).join('');
+        </li>` ).join('');
 
     img.src = pokemon.sprites.front_default;
     stats.innerHTML = pokemon.stats.map(stat => stat.stat.name + ": " + stat.base_stat).join("<br>");
@@ -110,13 +120,12 @@ async function showMoveDetails(item, moveName) {
         return;
     }
 
-    detailDiv.innerHTML = `
-        <strong>Tipo:</strong> ${moveData.type.name}<br>
+    detailDiv.innerHTML = 
+       ` <strong>Tipo:</strong> ${moveData.type.name}<br>
         <strong>Poder:</strong> ${moveData.power ?? "-"}<br>
         <strong>PP:</strong> ${moveData.pp ?? "-"}<br>
         <strong>Precision:</strong> ${moveData.accuracy ?? "-"}<br>
-        <strong>Prioridad:</strong> ${moveData.priority}
-    `;
+        <strong>Prioridad:</strong> ${moveData.priority} `;
     item.classList.add("active");
 }
 
@@ -190,7 +199,8 @@ function EvolutionChain(chain) {
 
 function displayEvolutions(details) {
     const evoElement = document.getElementById("evolutionsPokemon");
-    evoElement.innerHTML = details.map(d => `<img src="${d.image}" alt="${d.name}" style="width:50px; height:50px;"> ${d.name}`).join('<br>');
+    evoElement.innerHTML = `<div class="evolutions-container">${details.map(d => `<div class="evolution-item" onclick="fetchingPokemon('${d.name.toLowerCase()}')">
+    <img src="${d.image}" alt="${d.name}" style="width:50px; height:50px;"> ${d.name}</div>`).join('')}</div>`;
 }
 
 //items
