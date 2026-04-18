@@ -1,17 +1,18 @@
 let currentPokemon = null;
-
+/*await funciona para las funciones async para que primero se haga el fetch y luego se continue el codigo, haciendo que primero se busque
+el pokemon y luego ya te lo de todo bonito*/
 async function fetchingPokemon(pokemon) {
-    fetch("https://pokeapi.co/api/v2/pokemon/" + pokemon).then(response => {
+    try {
+        const response = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokemon);
         if (!response.ok) {
-        throw new Error("Error");
-    }
-    return response.json();
-    }).then(data => {
+            throw new Error("Error");
+        }
+        const data = await response.json();
         console.log(data);
-        changePokemon(data);
-    }).catch(error => {
+        await changePokemon(data);
+    } catch (error) {
         console.error("Error fetching", error);
-    });
+    }
 }
 
 function searchPokemon() {
@@ -31,7 +32,7 @@ function normal() {
     img.src = currentPokemon.sprites.front_default;
 }
 
-function changePokemon(pokemon) {
+async function changePokemon(pokemon) {
     currentPokemon = pokemon;
     let name = document.getElementById("nomPokemon");
     let type = document.getElementById("typePokemon");
@@ -42,6 +43,7 @@ function changePokemon(pokemon) {
     let ability = document.getElementById("abilitiesPokemon");
     let moves = document.getElementById("movesPokemon");
     let stats = document.getElementById("statsPokemon");
+    let evolutions = document.getElementById("evolutionsPokemon");
 
     name.innerHTML = pokemon.name;
     type.innerHTML = pokemon.types.map(t => t.type.name).join("<br>");
@@ -52,6 +54,48 @@ function changePokemon(pokemon) {
     moves.innerHTML = pokemon.moves.map(mov => mov.move.name).join(" | ");
     img.src = pokemon.sprites.front_default;
     stats.innerHTML = pokemon.stats.map(stat => stat.stat.name + ": " + stat.base_stat).join("<br>");
+
+    //evoluciones
+    await fetchEvolutions(pokemon.species.url);
+}
+
+async function fetchEvolutions(speciesUrl) {
+    try {
+        const speciesResponse = await fetch(speciesUrl);
+        const speciesData = await speciesResponse.json();
+        const evolutionUrl = speciesData.evolution_chain.url;
+
+        const evolutionResponse = await fetch(evolutionUrl);
+        const evolutionData = await evolutionResponse.json();
+
+        const evolutionNames = EvolutionChain(evolutionData.chain);
+
+        const evolutionDetails = [];
+        
+        for (const name of evolutionNames) {
+            const pokeResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+            const pokeData = await pokeResponse.json();
+            evolutionDetails.push({ name: pokeData.name, image: pokeData.sprites.front_default });
+        }
+
+        displayEvolutions(evolutionDetails);
+    } catch (error) {
+        console.error("Error fetching evolutions", error);
+        document.getElementById("evolutionsPokemon").innerHTML = "Error al cargar evoluciones";
+    }
+}
+
+function EvolutionChain(chain) {
+    const evos = [chain.species.name];
+    for (const next of chain.evolves_to) {
+        evos.push(EvolutionChain(next));
+    }
+    return evos;
+}
+
+function displayEvolutions(details) {
+    const evoElement = document.getElementById("evolutionsPokemon");
+    evoElement.innerHTML = details.map(d => `<img src="${d.image}" alt="${d.name}" style="width:50px; height:50px;"> ${d.name}`).join('<br>');
 }
 
 //movimientos
@@ -97,7 +141,6 @@ function changeMoves(moves) {
                             "Tipo: " + moves.type.name + "<br>" +
                             "Poder: " + moves.power + "<br>" +
                             "PP: " + moves.pp + "<br>" +
-                            "prioridad: " + moves.priority + "<br>" +
                             "Precision: " + moves.accuracy;
 }
 
