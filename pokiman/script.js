@@ -1,6 +1,8 @@
 let currentPokemon = null;
 /*await funciona para las funciones async para que primero se haga el fetch y luego se continue el codigo, haciendo que primero se busque
 el pokemon y luego ya te lo de todo bonito*/
+
+//pokemon
 async function fetchingPokemon(pokemon) {
     try {
         const response = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokemon);
@@ -57,13 +59,14 @@ async function changePokemon(pokemon) {
             <div class="move-info"></div>
         </li>
     `).join('');
-    
+
     img.src = pokemon.sprites.front_default;
     stats.innerHTML = pokemon.stats.map(stat => stat.stat.name + ": " + stat.base_stat).join("<br>");
 
-    //evoluciones
     await fetchEvolutions(pokemon.species.url);
 }
+
+//shiny y normal
 
 function toggleShiny() {
     if (!currentPokemon) return;
@@ -75,6 +78,22 @@ function toggleNormal() {
     if (!currentPokemon) return;
     let img = document.getElementById("imgPokemon");
     img.src = currentPokemon.sprites.front_default;
+}
+
+
+//movimientos
+
+async function fetchingPokemonMov(moves) {
+    try {
+        const response = await fetch("https://pokeapi.co/api/v2/move/" + moves);
+        if (!response.ok) {
+            throw new Error("Error");
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching", error);
+        return null;
+    }
 }
 
 async function showMoveDetails(item, moveName) {
@@ -101,6 +120,40 @@ async function showMoveDetails(item, moveName) {
     item.classList.add("active");
 }
 
+/*
+
+function searchMoves() {
+    if (!currentPokemon) {
+        document.getElementById("movesDetails").innerHTML = "No se encontro";
+        return;
+    }
+
+    let busq = document.getElementById("buscarMovimiento").value.toLowerCase();
+    if (!busq) {
+        document.getElementById("movesDetails").innerHTML = "Ingresa un movimiento para buscar.";
+        return;
+    }
+
+    const puedeAprender = currentPokemon.moves.some(mov => mov.move.name.toLowerCase() == busq);
+
+    if (puedeAprender) {
+        fetchingPokemonMov(busq);
+    } else {
+        document.getElementById("movesDetails").innerHTML = "Este pokemon no aprende ese movimiento.";
+    }
+}
+
+function changeMoves(moves) {
+    let moveDetails = document.getElementById("movesDetails");
+    moveDetails.innerHTML = "Nombre: " + moves.name + "<br>" +
+                            "Tipo: " + moves.type.name + "<br>" +
+                            "Poder: " + moves.power + "<br>" +
+                            "PP: " + moves.pp + "<br>" +
+                            "Precision: " + moves.accuracy;
+}
+*/
+
+//evoluciones
 async function fetchEvolutions(speciesUrl) {
     try {
         const speciesResponse = await fetch(speciesUrl);
@@ -139,54 +192,6 @@ function displayEvolutions(details) {
     const evoElement = document.getElementById("evolutionsPokemon");
     evoElement.innerHTML = details.map(d => `<img src="${d.image}" alt="${d.name}" style="width:50px; height:50px;"> ${d.name}`).join('<br>');
 }
-
-//movimientos
-
-async function fetchingPokemonMov(moves) {
-    try {
-        const response = await fetch("https://pokeapi.co/api/v2/move/" + moves);
-        if (!response.ok) {
-            throw new Error("Error");
-        }
-        return await response.json();
-    } catch (error) {
-        console.error("Error fetching", error);
-        return null;
-    }
-}
-
-/*
-
-function searchMoves() {
-    if (!currentPokemon) {
-        document.getElementById("movesDetails").innerHTML = "No se encontro";
-        return;
-    }
-
-    let busq = document.getElementById("buscarMovimiento").value.toLowerCase();
-    if (!busq) {
-        document.getElementById("movesDetails").innerHTML = "Ingresa un movimiento para buscar.";
-        return;
-    }
-
-    const puedeAprender = currentPokemon.moves.some(mov => mov.move.name.toLowerCase() == busq);
-
-    if (puedeAprender) {
-        fetchingPokemonMov(busq);
-    } else {
-        document.getElementById("movesDetails").innerHTML = "Este pokemon no aprende ese movimiento.";
-    }
-}
-
-function changeMoves(moves) {
-    let moveDetails = document.getElementById("movesDetails");
-    moveDetails.innerHTML = "Nombre: " + moves.name + "<br>" +
-                            "Tipo: " + moves.type.name + "<br>" +
-                            "Poder: " + moves.power + "<br>" +
-                            "PP: " + moves.pp + "<br>" +
-                            "Precision: " + moves.accuracy;
-}
-*/
 
 //items
 async function fetchingPokemonItem(items) {
