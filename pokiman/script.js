@@ -51,12 +51,54 @@ async function changePokemon(pokemon) {
     wei.innerHTML = pokemon.weight + " lbs";
     id.innerHTML = pokemon.id;
     ability.innerHTML = pokemon.abilities.map(abil => abil.ability.name).join(" | ");
-    moves.innerHTML = pokemon.moves.map(mov => mov.move.name).join(" | ");
+    moves.innerHTML = pokemon.moves.map(mov => `
+        <li class="move-item" onclick="showMoveDetails(this, '${mov.move.name}')">
+            <span class="move-name">${mov.move.name}</span>
+            <div class="move-info"></div>
+        </li>
+    `).join('');
+    
     img.src = pokemon.sprites.front_default;
     stats.innerHTML = pokemon.stats.map(stat => stat.stat.name + ": " + stat.base_stat).join("<br>");
 
     //evoluciones
     await fetchEvolutions(pokemon.species.url);
+}
+
+function toggleShiny() {
+    if (!currentPokemon) return;
+    let img = document.getElementById("imgPokemon");
+    img.src = currentPokemon.sprites.front_shiny;
+}
+
+function toggleNormal() {
+    if (!currentPokemon) return;
+    let img = document.getElementById("imgPokemon");
+    img.src = currentPokemon.sprites.front_default;
+}
+
+async function showMoveDetails(item, moveName) {
+    const detailDiv = item.querySelector(".move-info");
+    if (item.classList.contains("active")) {
+        item.classList.remove("active");
+        detailDiv.innerHTML = "";
+        return;
+    }
+
+    const moveData = await fetchingPokemonMov(moveName);
+    if (!moveData) {
+        detailDiv.innerHTML = "Error al cargar detalles";
+        return;
+    }
+
+    detailDiv.innerHTML = `
+        <strong>Tipo:</strong> ${moveData.type.name}<br>
+        <strong>Poder:</strong> ${moveData.power ?? "-"}<br>
+        <strong>PP:</strong> ${moveData.pp ?? "-"}<br>
+        <strong>Precision:</strong> ${moveData.accuracy ?? "-"}<br>
+        <strong>Prioridad:</strong> ${moveData.priority}
+    `;
+    item.classList.add("active");
 }
 
 async function fetchEvolutions(speciesUrl) {
@@ -88,7 +130,7 @@ async function fetchEvolutions(speciesUrl) {
 function EvolutionChain(chain) {
     const evos = [chain.species.name];
     for (const next of chain.evolves_to) {
-        evos.push(EvolutionChain(next));
+        evos.push(...EvolutionChain(next));
     }
     return evos;
 }
@@ -101,18 +143,19 @@ function displayEvolutions(details) {
 //movimientos
 
 async function fetchingPokemonMov(moves) {
-    fetch("https://pokeapi.co/api/v2/move/" + moves).then(response => {
+    try {
+        const response = await fetch("https://pokeapi.co/api/v2/move/" + moves);
         if (!response.ok) {
-        throw new Error("Error");
-    }
-    return response.json();
-    }).then(data => {
-        console.log(data);
-        changeMoves(data);
-    }).catch(error => {
+            throw new Error("Error");
+        }
+        return await response.json();
+    } catch (error) {
         console.error("Error fetching", error);
-    });
+        return null;
+    }
 }
+
+/*
 
 function searchMoves() {
     if (!currentPokemon) {
@@ -143,6 +186,7 @@ function changeMoves(moves) {
                             "PP: " + moves.pp + "<br>" +
                             "Precision: " + moves.accuracy;
 }
+*/
 
 //items
 async function fetchingPokemonItem(items) {

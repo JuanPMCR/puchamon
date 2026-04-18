@@ -11,6 +11,8 @@
         </div>
         <div id="pokemon">
             <img id="imgPokemon">
+            <button id="shiny" onclick="toggleShiny()">Shiny</button>
+            <button id="Normal" onclick="toggleNormal()">Normal</button>
             <div>
                 <h2>Nombre: </h2>
                 <p id="nomPokemon"></p>
@@ -41,12 +43,7 @@
             </div>
             <div>
                 <h2>Movimientos: </h2>
-                <p id="movesPokemon"></p>
-            </div>
-            <div id="movimientos">
-                <input id="buscarMovimiento" type="text">
-                <button onclick="searchMoves()">Busca Movimientos</button>
-                <p id="movesDetails"></p>
+                <ul id="movesPokemon"></ul>
             </div>
             <div>
                 <h2>Evoluciones: </h2>
