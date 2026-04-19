@@ -153,7 +153,9 @@ button:active {
         margin-bottom: 20px;
     }
 
-    .search-container {
+    .search-container,
+    div:has(> #buscarMovimiento),
+    div:has(> #buscarItem) {
         min-width: 280px;
         padding: 20px;
     }
@@ -162,10 +164,11 @@ button:active {
         flex-direction: column;
     }
 
-    #pokemon {
+    #pokemon,
+    #moves,
+    #items {
         min-width: 280px;
         padding: 20px;
-        
     }
 
     #imgPokemon {
@@ -173,12 +176,27 @@ button:active {
         height: 200px;
     }
 
-    #pokemon h2 {
+    #pokemon h2,
+    #moves h2,
+    #items h2 {
         font-size: 0.95em;
     }
 
-    #pokemon p {
+    #pokemon p,
+    #moves p,
+    #items p {
         font-size: 0.9em;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .navbar a {
+        padding: 8px 15px;
+        font-size: 0.8em;
     }
 }
 
@@ -191,28 +209,104 @@ button:active {
     border-radius: 8px;
 }
 
-#buscarMovimiento {
+/* CONTENEDORES DE BÚSQUEDA - MOVIMIENTOS E ITEMS */
+.search-container,
+div:has(> #buscarMovimiento),
+div:has(> #buscarItem) {
+    background: linear-gradient(135deg, #f10606c9, #47d7d2);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+    border: 5px solid #f10606c9;
+    min-width: 300px;
+}
+
+/* INPUTS DE BÚSQUEDA */
+#buscarMovimiento,
+#buscarItem {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: none;
     border-radius: 8px;
     font-size: 1em;
-    background-color: #888888;
+    background-color: #FFFFFF;
     color: #333;
     margin-bottom: 10px;
     box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
 }
 
-#buscarItem {
-    width: 100%;
-    padding: 10px;
-    border: none;
+#buscarMovimiento::placeholder,
+#buscarItem::placeholder {
+    color: #999;
+}
+
+#buscarMovimiento:focus,
+#buscarItem:focus {
+    outline: none;
+    box-shadow: 0 0 10px #d71f1fc9, inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* CONTENEDOR DE MOVIMIENTOS */
+#moves {
+    background: linear-gradient(135deg, #f10606c9, #da3f3fc9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    border: 8px solid #f14b4bc9;
+    min-width: 350px;
+    max-width: 800px;
+    color: #FFFFFF;
+}
+
+/* CONTENEDOR DE ITEMS */
+#items {
+    background: linear-gradient(135deg, #47d7d2, #1e8f7d);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    border: 8px solid #1ab8a0;
+    min-width: 350px;
+    max-width: 800px;
+    color: #FFFFFF;
+}
+
+/* SECCIONES DENTRO DE MOVIMIENTOS E ITEMS */
+#moves div,
+#items div {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 4px solid #fff;
     border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#moves div:hover,
+#items div:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-left: 6px solid #fff;
+    transform: translateX(5px);
+}
+
+/* TÍTULOS H2 EN MOVIMIENTOS E ITEMS */
+#moves h2,
+#items h2 {
     font-size: 1em;
-    background-color: #888888;
-    color: #333;
-    margin-bottom: 10px;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+    color: #FFF;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* PÁRRAFOS EN MOVIMIENTOS E ITEMS */
+#moves p,
+#items p {
+    font-size: 0.95em;
+    color: #E8E8E8;
+    line-height: 1.6;
+    word-break: break-word;
 }
 
 .moves-container {
