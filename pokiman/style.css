@@ -353,7 +353,7 @@ div:has(> #buscarItem) {
 
 #buscarMovimiento::placeholder,
 #buscarItem::placeholder {
-    color: #999;
+    color: #f10606c9;
 }
 
 #buscarMovimiento:focus,
@@ -371,19 +371,19 @@ div:has(> #buscarItem) {
     border: 8px solid #f14b4bc9;
     min-width: 350px;
     max-width: 800px;
-    color: #FFFFFF;
+    color: #f10606;
 }
 
 /* CONTENEDOR DE ITEMS */
 #items {
-    background: linear-gradient(135deg, #47d7d2, #1e8f7d);
+    background: linear-gradient(135deg, #f10606c9, #da3f3fc9);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-    border: 8px solid #1ab8a0;
+    border: 8px solid #f14b4bc9;
     min-width: 350px;
     max-width: 800px;
-    color: #FFFFFF;
+    color: #f10606;
 }
 
 /* SECCIONES DENTRO DE MOVIMIENTOS E ITEMS */
@@ -392,7 +392,7 @@ div:has(> #buscarItem) {
     margin-bottom: 20px;
     padding: 15px;
     background: rgba(255, 215, 0, 0.1);
-    border-left: 4px solid #fff;
+    border-left: 4px solid #f10606c9;
     border-radius: 8px;
     transition: all 0.3s ease;
 }
@@ -463,11 +463,7 @@ div:has(> #buscarItem) {
     display: none;
     margin-top: 10px;
     padding: 10px;
-    background: rgba(255,255,255,0.85);
-    color: #000;
-    border-radius: 8px;
-    line-height: 1.4;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.15);
+    background: #f10606c9
 }
 
 #movesPokemon .move-item.active .move-info {
@@ -502,6 +498,7 @@ div:has(> #buscarItem) {
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     border: 8px solid #f14b4bc9;
     color: #FFFFFF;
+    min-width: 350px;
 }
 
 #movimientos-section h2 {
@@ -513,113 +510,120 @@ div:has(> #buscarItem) {
     font-weight: bold;
 }
 
-/* LOGIN STYLES */
-body.login-page {
-    justify-content: center;
-    padding-top: 20px;
-}
+/* ========== ESTILOS PARA LOGIN ========== */
 
+/* Contenedor del formulario de login */
 #loginForm {
     background: linear-gradient(135deg, #f10606c9, #da3f3fc9);
     border-radius: 20px;
     padding: 40px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     border: 8px solid #f14b4bc9;
-    min-width: 300px;
+    min-width: 350px;
     max-width: 500px;
     color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.content-wrapper h1 {
-    text-align: center;
-    color: #FFFFFF;
-    margin-bottom: 30px;
+/* Título del login */
+body > div.content-wrapper > h1 {
     font-size: 2em;
+    color: #FFFFFF;
     text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
+/* Labels */
 #loginForm label {
-    display: block;
-    margin-bottom: 8px;
-    color: #FFF;
+    font-size: 0.95em;
     font-weight: bold;
-    font-size: 1em;
+    color: #FFFFFF;
     text-transform: uppercase;
     letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
 }
 
+/* Inputs de username y password */
 #loginForm input[type="text"],
 #loginForm input[type="password"] {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
+    padding: 14px;
     border: none;
     border-radius: 8px;
     font-size: 1em;
     background-color: #FFFFFF;
     color: #333;
     box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
-    font-family: 'Press Start 2P', 'Courier New', monospace;
     transition: all 0.3s ease;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
 }
 
 #loginForm input[type="text"]:focus,
 #loginForm input[type="password"]:focus {
     outline: none;
-    box-shadow: 0 0 10px #d71f1fc9, inset 0 2px 5px rgba(0,0,0,0.2);
-    background-color: #FFFACD;
+    box-shadow: 0 0 15px #f10606c9, inset 0 2px 5px rgba(0,0,0,0.2);
+    transform: scale(1.02);
 }
 
-#loginForm button {
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(135deg, #f10606c9, #ff0000ef);
+/* Botón submit */
+#loginForm button[type="submit"] {
+    padding: 14px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
     color: #000;
-    border: 3px solid #000;
-    border-radius: 10px;
+    border: none;
+    border-radius: 8px;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1em;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     text-transform: uppercase;
-    font-family: 'Press Start 2P', 'Courier New', monospace;
+    letter-spacing: 1px;
 }
 
-#loginForm button:hover {
-    background: linear-gradient(135deg, #ff0000ef, #ff3333ff);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+#loginForm button[type="submit"]:hover {
+    background: linear-gradient(135deg, #FFA500, #FF8C00);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
-#loginForm button:active {
+#loginForm button[type="submit"]:active {
     transform: translateY(0);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
+/* Responsive para login */
 @media (max-width: 600px) {
     #loginForm {
         min-width: 280px;
-        padding: 30px;
+        padding: 25px;
+        gap: 15px;
     }
     
-    .content-wrapper h1 {
+    body > div.content-wrapper > h1 {
         font-size: 1.5em;
         margin-bottom: 20px;
     }
     
     #loginForm label {
-        font-size: 0.9em;
+        font-size: 0.85em;
     }
     
     #loginForm input[type="text"],
-    #loginForm input[type="password"],
-    #loginForm button {
+    #loginForm input[type="password"] {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    
+    #loginForm button[type="submit"] {
+        padding: 12px;
         font-size: 0.9em;
     }
 }
-
 
 #movimientos-section h2 {
     font-size: 1.1em;
