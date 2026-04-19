@@ -573,7 +573,7 @@ body > div.content-wrapper > h1 {
 /* Botón submit */
 #loginForm button[type="submit"] {
     padding: 14px;
-    background: linear-gradient(135deg, #FFD700, #FFA500);
+    background: linear-gradient(135deg, #f21010c9, #ea3535c9);
     color: #000;
     border: none;
     border-radius: 8px;
@@ -587,7 +587,7 @@ body > div.content-wrapper > h1 {
 }
 
 #loginForm button[type="submit"]:hover {
-    background: linear-gradient(135deg, #FFA500, #FF8C00);
+    background: linear-gradient(135deg, #f00202c9, #ee0b0bc9);
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
