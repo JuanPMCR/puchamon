@@ -5,10 +5,15 @@
         <title>Puchamon - Menu Principal</title>
     </head>
     <body>
+        <nav class="navbar">
+            <a href="index.html" class="active">Pokémon</a>
+            <a href="movimientos.html">Movimientos</a>
+            <a href="items.html">Items</a>                 
+            <a href="login.html">Login</a>
+        </nav>
         <div>
             <input id="buscarPokemon" type="text">
-            <button onclick="searchPokemon()">Buscar Nombre o Numero</button>
-            <button onclick="window.location.href='pokedex.html'">Ver Pokedex</button>
+            <button onclick="searchPokemon()">Buscar</button>
         </div>
         <div class="content-wrapper">
             <div id="pokemon">
