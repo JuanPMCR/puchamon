@@ -501,6 +501,124 @@ div:has(> #buscarItem) {
     padding: 30px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     border: 8px solid #f14b4bc9;
+    color: #FFFFFF;
+}
+
+#movimientos-section h2 {
+    font-size: 1.1em;
+    color: Black;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* LOGIN STYLES */
+body.login-page {
+    justify-content: center;
+    padding-top: 20px;
+}
+
+#loginForm {
+    background: linear-gradient(135deg, #f10606c9, #da3f3fc9);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    border: 8px solid #f14b4bc9;
+    min-width: 300px;
+    max-width: 500px;
+    color: #FFFFFF;
+}
+
+.content-wrapper h1 {
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+    font-size: 2em;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+#loginForm label {
+    display: block;
+    margin-bottom: 8px;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#loginForm input[type="text"],
+#loginForm input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: #FFFFFF;
+    color: #333;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    transition: all 0.3s ease;
+}
+
+#loginForm input[type="text"]:focus,
+#loginForm input[type="password"]:focus {
+    outline: none;
+    box-shadow: 0 0 10px #d71f1fc9, inset 0 2px 5px rgba(0,0,0,0.2);
+    background-color: #FFFACD;
+}
+
+#loginForm button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #f10606c9, #ff0000ef);
+    color: #000;
+    border: 3px solid #000;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+}
+
+#loginForm button:hover {
+    background: linear-gradient(135deg, #ff0000ef, #ff3333ff);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+#loginForm button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 600px) {
+    #loginForm {
+        min-width: 280px;
+        padding: 30px;
+    }
+    
+    .content-wrapper h1 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+    
+    #loginForm label {
+        font-size: 0.9em;
+    }
+    
+    #loginForm input[type="text"],
+    #loginForm input[type="password"],
+    #loginForm button {
+        font-size: 0.9em;
+    }
+}
     min-width: 350px;
     max-width: 800px;
     color: #FFFFFF;
