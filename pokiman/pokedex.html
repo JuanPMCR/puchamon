@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Pokedex - lista</title>
+    </head>
+    <body>
+        <div class="content-wrapper">
+            <div id="pokemon-list">
+                <h1>Lista de Pokemon</h1>
+                <div class="filter-row">
+                    <label for="typeFilter">Filtrar por tipo:</label>
+                    <select id="typeFilter">
+                        <option value="all">Todos</option>
+                    </select>
+                    <button onclick="window.location.href='busqueda.html'">Buscar Pokemon</button>
+                </div>
+                <div id="pagination" class="pagination">
+                    <button id="prevBtn" disabled>Anterior</button>
+                    <span id="pageInfo">Página 1</span>
+                    <button id="nextBtn">Siguiente</button>
+                </div>
+                <ul id="listPokemon"></ul>
+            </div>
+        </div>
+
+        <script src="pokedex.js"></script>
+    </body>
+</html>

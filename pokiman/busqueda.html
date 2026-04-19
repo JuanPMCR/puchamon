@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Puchamon - Menu Principal</title>
+    </head>
+    <body>
+        <div>
+            <input id="buscarPokemon" type="text">
+            <button onclick="searchPokemon()">Buscar Nombre o Numero</button>
+            <button onclick="window.location.href='pokedex.html'">Ver Pokedex</button>
+        </div>
+        <div class="content-wrapper">
+            <div id="pokemon">
+                <img id="imgPokemon">
+                <button id="shiny" onclick="toggleShiny()">Shiny</button>
+                <button id="Normal" onclick="toggleNormal()">Normal</button>
+                <div>
+                    <h2>Nombre: </h2>
+                    <p id="nomPokemon"></p>
+                </div>
+                <div>
+                    <h2>Tipo: </h2>
+                    <p id="typePokemon"></p>
+                </div>
+                <div>
+                    <h2>Peso: </h2>
+                    <p id="weightPokemon"></p>
+                </div>
+                <div>
+                    <h2>Altura: </h2>
+                    <p id="heightPokemon"></p>
+                </div>
+                <div>
+                    <h2>ID: </h2>
+                    <p id="idPokemon"></p>
+                </div>
+                <div>
+                    <h2>Stats base:</h2>
+                    <p id="statsPokemon"></p>
+                </div>
+                <div>
+                    <h2>Habilidades: </h2>
+                    <p id="abilitiesPokemon"></p>
+                </div>
+                <div>
+                    <h2>Evoluciones: </h2>
+                    <p id="evolutionsPokemon"></p>
+                </div>
+            </div>
+            <div id="movimientos-section">
+                <h2>Movimientos: </h2>
+                <div class="moves-container">
+                    <ul id="movesPokemon"></ul>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>
