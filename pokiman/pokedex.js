@@ -1,5 +1,5 @@
-const pageSize = 40;
-let currentOffset = 0, totalCount = 0, currentType = 'all';
+const pageSize = 40; //cantidad de pokemons por pagina
+let currentOffset = 0 /*posicion actual */, totalCount = 0, currentType = 'all';
 let listElement, prevBtn, nextBtn, pageInfo, typeFilter;
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -17,6 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
     loadPokemonPage(0);
 });
 
+//filtro de tipos
 async function loadTypeFilter() {
     try {
         const data = await (await fetch('https://pokeapi.co/api/v2/type')).json();
@@ -25,6 +26,7 @@ async function loadTypeFilter() {
     } catch (error) {}
 }
 
+//hacer paginas
 async function loadPokemonPage(offset = 0) {
     listElement.innerHTML = '<li>Cargando...</li>';
     try {
@@ -33,7 +35,7 @@ async function loadPokemonPage(offset = 0) {
             const data = await (await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${pageSize}&offset=${offset}`)).json();
             totalCount = data.count;
             currentOffset = offset;
-            //promise es como la peticion, con await se espera a que se cumplan todas antes de continuar
+            //promise
             pagePokemons = await Promise.all(data.results.map(p => fetchPokemonDetail(p.url)));
         } else {
             const data = await (await fetch(`https://pokeapi.co/api/v2/type/${currentType}`)).json();

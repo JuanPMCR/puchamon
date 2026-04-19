@@ -32,7 +32,8 @@ async function changePokemon(pokemon) {
         heightPokemon: `${pokemon.height} ft`,
         idPokemon: pokemon.id,
         abilitiesPokemon: pokemon.abilities.map(a => `<li>${a.ability.name}</li>`).join(''),
-        movesPokemon: pokemon.moves.map(m => `<li class="move-item" onclick="showMoveDetails(this, '${m.move.name}')"><span class="move-name">${m.move.name}</span><div class="move-info"></div></li>`).join(''),
+        movesPokemon: pokemon.moves.map(m => `<li class="move-item" onclick="showMoveDetails(this, '${m.move.name}')"><span class="move-name">${m.move.name}</span>
+            <div class="move-info"></div></li>`).join(''),
         statsPokemon: pokemon.stats.map(s => `${s.stat.name}: ${s.base_stat}`).join('<br>')
     };
     Object.entries(elements).forEach(([id, val]) => document.getElementById(id).innerHTML = val);
@@ -49,6 +50,7 @@ function toggleNormal() {
     if (currentPokemon) document.getElementById('imgPokemon').src = currentPokemon.sprites.front_default;
 }
 
+//movimientos
 async function fetchingPokemonMov(moves) {
     try {
         return await (await fetch(`https://pokeapi.co/api/v2/move/${moves}`)).json();
@@ -78,6 +80,7 @@ async function showMoveDetails(item, moveName) {
     item.classList.add('active');
 }
 
+//evos
 async function fetchEvolutions(speciesUrl) {
     try {
         const speciesData = await (await fetch(speciesUrl)).json();
@@ -103,6 +106,7 @@ function displayEvolutions(details) {
     document.getElementById('evolutionsPokemon').innerHTML = `<div class="evolutions-container">${details.map(d => `<div class="evolution-item" onclick="fetchingPokemon('${d.name}')"><img src="${d.image}" alt="${d.name}" style="width:50px; height:50px;"> ${d.name}</div>`).join('')}</div>`;
 }
 
+//items
 async function fetchingPokemonItem(items) {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/item/${items}`);
