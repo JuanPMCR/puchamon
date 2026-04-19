@@ -328,7 +328,7 @@ button:active {
 .search-container,
 div:has(> #buscarMovimiento),
 div:has(> #buscarItem) {
-    background: linear-gradient(135deg, #f10606c9, #47d7d2);
+    background: linear-gradient(135deg, #f10606c9, #ef2e2ec9);
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
