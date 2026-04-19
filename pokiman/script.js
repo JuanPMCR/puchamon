@@ -1,30 +1,26 @@
 let currentPokemon = null;
 
 window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const pokemonQuery = params.get('pokemon');
+    const pokemonQuery = new URLSearchParams(window.location.search).get('pokemon');
     if (pokemonQuery) {
         document.getElementById('buscarPokemon').value = pokemonQuery.toLowerCase();
         fetchingPokemon(pokemonQuery.toLowerCase());
     }
 });
 
+//busqueda
 async function fetchingPokemon(pokemon) {
     try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
-        if (!response.ok) throw new Error('Pokémon no encontrado');
-        const data = await response.json();
+        const data = await (await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)).json();
         await changePokemon(data);
     } catch (error) {
-        console.error('Error:', error);
         alert('Pokémon no encontrado. Intenta con nombre o número.');
     }
 }
 
 function searchPokemon() {
     const busq = document.getElementById('buscarPokemon').value.trim();
-    if (!busq) return;
-    fetchingPokemon(busq.toLowerCase());
+    if (busq) fetchingPokemon(busq.toLowerCase());
 }
 
 async function changePokemon(pokemon) {
@@ -36,34 +32,27 @@ async function changePokemon(pokemon) {
         heightPokemon: `${pokemon.height} ft`,
         idPokemon: pokemon.id,
         abilitiesPokemon: pokemon.abilities.map(a => `<li>${a.ability.name}</li>`).join(''),
-        movesPokemon: pokemon.moves.map(m => `<li class="move-item" onclick="showMoveDetails(this, '${m.move.name}')">
-            <span class="move-name">${m.move.name}</span><div class="move-info"></div></li>`).join(''),
+        movesPokemon: pokemon.moves.map(m => `<li class="move-item" onclick="showMoveDetails(this, '${m.move.name}')"><span class="move-name">${m.move.name}</span><div class="move-info"></div></li>`).join(''),
         statsPokemon: pokemon.stats.map(s => `${s.stat.name}: ${s.base_stat}`).join('<br>')
     };
-
-    Object.entries(elements).forEach(([id, value]) => document.getElementById(id).innerHTML = value);
+    Object.entries(elements).forEach(([id, val]) => document.getElementById(id).innerHTML = val);
     document.getElementById('imgPokemon').src = pokemon.sprites.front_default;
     await fetchEvolutions(pokemon.species.url);
 }
 
-//shiny
+//shiny y normal
 function toggleShiny() {
-    if (!currentPokemon) return;
-    document.getElementById('imgPokemon').src = currentPokemon.sprites.front_shiny;
+    if (currentPokemon) document.getElementById('imgPokemon').src = currentPokemon.sprites.front_shiny;
 }
 
 function toggleNormal() {
-    if (!currentPokemon) return;
-    document.getElementById('imgPokemon').src = currentPokemon.sprites.front_default;
+    if (currentPokemon) document.getElementById('imgPokemon').src = currentPokemon.sprites.front_default;
 }
 
 async function fetchingPokemonMov(moves) {
     try {
-        const response = await fetch(`https://pokeapi.co/api/v2/move/${moves}`);
-        if (!response.ok) throw new Error('Movimiento no encontrado');
-        return await response.json();
+        return await (await fetch(`https://pokeapi.co/api/v2/move/${moves}`)).json();
     } catch (error) {
-        console.error('Error fetching move:', error);
         return null;
     }
 }
@@ -77,10 +66,15 @@ async function showMoveDetails(item, moveName) {
     }
     const moveData = await fetchingPokemonMov(moveName);
     if (!moveData) {
-        detailDiv.innerHTML = 'Error al cargar detalles';
+        detailDiv.innerHTML = 'Error';
         return;
     }
-    detailDiv.innerHTML = `<strong>Tipo:</strong> ${moveData.type.name}<br><strong>Poder:</strong> ${moveData.power || '-'}<br><strong>PP:</strong> ${moveData.pp || '-'}<br><strong>Precisión:</strong> ${moveData.accuracy || '-'}<br><strong>Prioridad:</strong> ${moveData.priority}`;
+    detailDiv.innerHTML = `
+    <strong>Tipo:</strong> ${moveData.type.name}<br>
+    <strong>Poder:</strong> ${moveData.power ?? '-'}<br>
+    <strong>PP:</strong> ${moveData.pp ?? '-'}<br>
+    <strong>Precision:</strong> ${moveData.accuracy ?? '-'}<br>
+    <strong>Prioridad:</strong> ${moveData.priority}`;
     item.classList.add('active');
 }
 
@@ -95,8 +89,7 @@ async function fetchEvolutions(speciesUrl) {
         }));
         displayEvolutions(evolutionDetails);
     } catch (error) {
-        console.error('Error fetching evolutions:', error);
-        document.getElementById('evolutionsPokemon').innerHTML = 'Error al cargar evoluciones';
+        document.getElementById('evolutionsPokemon').innerHTML = 'Error';
     }
 }
 
@@ -107,9 +100,7 @@ function getEvolutionChain(chain) {
 }
 
 function displayEvolutions(details) {
-    document.getElementById('evolutionsPokemon').innerHTML = `<div class="evolutions-container">
-    ${details.map(d => `<div class="evolution-item" onclick="fetchingPokemon('${d.name.toLowerCase()}')">
-    <img src="${d.image}" alt="${d.name}" style="width:50px; height:50px;"> ${d.name}</div>`).join('')}</div>`;
+    document.getElementById('evolutionsPokemon').innerHTML = `<div class="evolutions-container">${details.map(d => `<div class="evolution-item" onclick="fetchingPokemon('${d.name}')"><img src="${d.image}" alt="${d.name}" style="width:50px; height:50px;"> ${d.name}</div>`).join('')}</div>`;
 }
 
 async function fetchingPokemonItem(items) {

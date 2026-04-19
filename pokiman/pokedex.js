@@ -1,7 +1,5 @@
 const pageSize = 40;
-let currentOffset = 0;
-let totalCount = 0;
-let currentType = 'all';
+let currentOffset = 0, totalCount = 0, currentType = 'all';
 let listElement, prevBtn, nextBtn, pageInfo, typeFilter;
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -23,20 +21,19 @@ async function loadTypeFilter() {
     try {
         const data = await (await fetch('https://pokeapi.co/api/v2/type')).json();
         const types = data.results.filter(t => !['unknown', 'shadow'].includes(t.name));
-        typeFilter.innerHTML = '<option value="all">Todos</option>' + types.sort((a, b) => a.name.localeCompare(b.name)).map(t => `<option value="${t.name}">${capitalize(t.name)}</option>`).join('');
-    } catch (error) {
-        console.error('Error cargando filtro:', error);
-    }
+        typeFilter.innerHTML = '<option value="all">Todos</option>' + types.sort((a, b) => a.name.localeCompare(b.name)).map(t => `<option value="${t.name}">${cap(t.name)}</option>`).join('');
+    } catch (error) {}
 }
 
 async function loadPokemonPage(offset = 0) {
-    listElement.innerHTML = '<li>Cargando pokemones...</li>';
+    listElement.innerHTML = '<li>Cargando...</li>';
     try {
         let pagePokemons = [];
         if (currentType === 'all') {
             const data = await (await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${pageSize}&offset=${offset}`)).json();
             totalCount = data.count;
             currentOffset = offset;
+            //promise es como la peticion, con await se espera a que se cumplan todas antes de continuar
             pagePokemons = await Promise.all(data.results.map(p => fetchPokemonDetail(p.url)));
         } else {
             const data = await (await fetch(`https://pokeapi.co/api/v2/type/${currentType}`)).json();
@@ -48,8 +45,7 @@ async function loadPokemonPage(offset = 0) {
         renderPokemonList(pagePokemons);
         updatePagination(currentOffset, totalCount, pagePokemons.length);
     } catch (error) {
-        listElement.innerHTML = '<li>Error al cargar los pokemones.</li>';
-        console.error('Error:', error);
+        listElement.innerHTML = '<li>Error al cargar.</li>';
     }
 }
 
@@ -58,22 +54,22 @@ async function fetchPokemonDetail(url) {
         const data = await (await fetch(url)).json();
         return { name: data.name, sprite: data.sprites?.front_default || '', types: data.types.map(t => t.type.name) };
     } catch (error) {
-        console.error('Error fetching detail:', error);
-        return { name: 'Desconocido', sprite: '', types: [] };
+        return { name: 'Error', sprite: '', types: [] };
     }
 }
 
 function renderPokemonList(pokemonArray) {
     if (!pokemonArray.length) {
-        listElement.innerHTML = '<li>No se encontraron pokemones.</li>';
+        listElement.innerHTML = '<li>Sin resultados.</li>';
         return;
     }
     listElement.innerHTML = pokemonArray.map((p, i) => {
         const pos = currentOffset + i + 1;
-        const typesHtml = p.types.map(t => `<span class="type-badge">${capitalize(t)}</span>`).join('');
+        const typesHtml = p.types.map(t => `<span class="type-badge">${cap(t)}</span>`).join('');
         const imgHtml = p.sprite ? `<img src="${p.sprite}" alt="${p.name}" class="pokemon-thumb">` : `<div class="pokemon-thumb placeholder">?</div>`;
-        return `<li class="pokemon-card" onclick="window.location.href='busqueda.html?pokemon=${encodeURIComponent(p.name)}'">${imgHtml}<div class="pokemon-info"><strong>${pos}. ${capitalize(p.name)}</strong><div class="type-list">${typesHtml}</div></div></li>`;
-    }).join('');
+        return `<li class="pokemon-card" onclick="window.location.href='busqueda.html?pokemon=${encodeURIComponent(p.name)}'">${imgHtml}
+        <div class="pokemon-info"><strong>${pos}. ${cap(p.name)}</strong>
+        <div class="type-list">${typesHtml}</div></div></li>`;}).join('');
 }
 
 function updatePagination(offset, total, pageCount) {
@@ -81,11 +77,9 @@ function updatePagination(offset, total, pageCount) {
     nextBtn.disabled = offset + pageSize >= total;
     const page = Math.floor(offset / pageSize) + 1;
     const totalPages = Math.ceil(total / pageSize);
-    const first = offset + 1;
-    const last = offset + pageCount;
-    pageInfo.textContent = `Mostrando ${first}-${last} de ${total} (${page}/${totalPages})`;
+    pageInfo.textContent = `${offset + 1}-${offset + pageCount} de ${total} (${page}/${totalPages})`;
 }
 
-function capitalize(text) {
+function cap(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
 }
