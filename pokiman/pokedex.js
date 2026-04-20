@@ -143,3 +143,12 @@ function updatePage(offset, total, pageCount) {
 function cap(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
 }
+
+//Añadir a la seccion de equipo
+function addToTeam() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pokemonName = urlParams.get('pokemon');
+    const pokeimg = document.querySelector('.pokemon-thumb').src;
+
+    if (!pokemonName) return;
+}
