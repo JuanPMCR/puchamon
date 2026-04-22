@@ -17,18 +17,18 @@
             <div id="pokemon-list">
                 <h1>Lista de Pokemon</h1>
                 <div class="filter-row">
-                    <label for="typeFilter">Filtrar por tipo:</label>
+                    <label for="typeFilter"><strong>Filtrar por tipo:</strong></label>
                     <select id="typeFilter">
                         <option value="all">Todos</option>
                     </select>
-                    <button onclick="window.location.href='../Busqueda/busqueda.html'">Buscar Pokemon</button>
+                    <button id="buscar" onclick="window.location.href='../Busqueda/busqueda.html'">Buscar Pokemon</button>
                 </div>
+                <ul id="listPokemon"></ul>
                 <div id="pagination" class="pagination">
                     <button id="prevBtn" disabled>Anterior</button>
                     <span id="pageInfo">Página 1</span>
                     <button id="nextBtn">Siguiente</button>
                 </div>
-                <ul id="listPokemon"></ul>
             </div>
         </div>
 

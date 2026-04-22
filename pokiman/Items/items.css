@@ -261,7 +261,7 @@ div:has(> #buscarItem) {
     padding: 30px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     border: 8px solid #f14b4bc9;
-    color: #FFFFFF;
+    color: #ffecec;
     min-width: 350px;
 }
 
@@ -300,7 +300,7 @@ div:has(> #buscarItem) {
 /* EFECTO HOVER EN MOVIMIENTOS - Resalta y anima al pasar ratón */
 #moves div:hover {
     background: rgba(255, 255, 255, 0.2);
-    border-left: 6px solid #fff;
+    border-left: 6px solid #ffecec;
     transform: translateX(5px);
 }
 
