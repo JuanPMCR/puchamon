@@ -1,0 +1,262 @@
+/* ============================================================================================= */
+/* RESET Y ESTILOS GENERALES */
+/* ============================================================================================= */
+
+/* RESET GENERAL - Elimina márgenes y rellenos por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ESTILOS DEL CUERPO - Fondo con gradiente y disposición principal */
+body {
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    background: linear-gradient(135deg, #052b4f 0%, #392356 50%, #143533 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    padding-top: 100px;
+}
+
+/* CONTENEDOR FLEXIBLE - Organiza elementos secundarios en filas/columnas */
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* ESTILOS DEL BOTÓN - Botones rojo con hover animado */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #f10606c9;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+}
+
+/* EFECTO HOVER - Elevación y cambio de gradiente al pasar el ratón */
+button:hover {
+    background: linear-gradient(135deg, #f10606c9, #ff0000ef);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* EFECTO CLICK - Regresa a posición normal al hacer click */
+button:active {
+    transform: translateY(0);
+}
+
+
+/* CONTENEDOR PRINCIPAL DE BÚSQUEDA - Diseño con gradiente rojo-cian */
+.search-container {
+    background: linear-gradient(135deg, #f10606c9, #47d7d2);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+    border: 5px solid #f10606c9;
+    min-width: 300px;
+}
+
+/* INPUT DE BÚSQUEDA - Campo de texto para buscar Pokémon */
+#buscarPokemon {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: #FFFFFF;
+    color: #333;
+    margin-bottom: 10px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#buscarPokemon::placeholder {
+    color: #999;
+}
+
+#buscarPokemon:focus {
+    outline: none;
+    box-shadow: 0 0 10px #d71f1fc9, inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ESTILOS DEL BOTÓN - Botones rojo con hover animado */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #f10606c9;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+}
+
+/* EFECTO HOVER - Elevación y cambio de gradiente al pasar el ratón */
+button:hover {
+    background: linear-gradient(135deg, #f10606c9, #ff0000ef);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* EFECTO CLICK - Regresa a posición normal al hacer click */
+button:active {
+    transform: translateY(0);
+}
+
+
+/* ============================================================================================= */
+/* BARRA DE NAVEGACIÓN - navbar.html o navegación general */
+/* ============================================================================================= */
+
+/* BARRA DE NAVEGACIÓN - Navbar fija en la parte superior */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #f10606c9, #da3f3fc9);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    z-index: 1000;
+    border-bottom: 5px solid #f14b4bc9;
+}
+
+/* ENLACES DE NAVEGACIÓN - Enlaces con fondo semitransparente */
+.navbar a {
+    color: #000;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+/* HOVER EN ENLACES - Efecto al pasar ratón sobre enlaces */
+.navbar a:hover {
+    background: rgba(255,255,255,0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* ENLACE ACTIVO - Resalta el enlace de página actual */
+.navbar a.active {
+    background: rgba(255,255,255,0.9);
+    border: 2px solid #000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* ============================================================================================= */
+/* LOGIN - Login/login.html */
+/* ============================================================================================= */
+
+/* CONTENEDOR DEL FORMULARIO DE LOGIN - Panel con gradiente para login */
+#loginForm {
+    background: linear-gradient(135deg, #f10606c9, #da3f3fc9);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    border: 8px solid #f14b4bc9;
+    min-width: 350px;
+    max-width: 500px;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* TÍTULO DEL LOGIN - Encabezado grande con sombra de texto */
+body > div.content-wrapper > h1 {
+    font-size: 2em;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* ETIQUETAS DEL FORMULARIO - Labels para campos de entrada */
+#loginForm label {
+    font-size: 0.95em;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* INPUTS DE USUARIO Y CONTRASEÑA - Campos de texto personalizados */
+#loginForm input[type="text"],
+#loginForm input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: #FFFFFF;
+    color: #333;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+}
+
+/* FOCUS EN INPUTS - Efecto luminoso al hacer focus */
+#loginForm input[type="text"]:focus,
+#loginForm input[type="password"]:focus {
+    outline: none;
+    box-shadow: 0 0 15px #f10606c9, inset 0 2px 5px rgba(0,0,0,0.2);
+    transform: scale(1.02);
+}
+
+/* BOTÓN SUBMIT - Botón de envío con gradiente */
+#loginForm button[type="submit"] {
+    padding: 14px;
+    background: linear-gradient(135deg, #f21010c9, #ea3535c9);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* HOVER EN BOTÓN SUBMIT - Efecto de elevación */
+#loginForm button[type="submit"]:hover {
+    background: linear-gradient(135deg, #f00202c9, #ee0b0bc9);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* CLICK EN BOTÓN SUBMIT - Efecto de presión */
+#loginForm button[type="submit"]:active {
+    transform: translateY(0);
+}

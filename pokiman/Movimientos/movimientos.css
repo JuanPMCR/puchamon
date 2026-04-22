@@ -1,0 +1,376 @@
+/* ============================================================================================= */
+/* RESET Y ESTILOS GENERALES */
+/* ============================================================================================= */
+
+/* RESET GENERAL - Elimina márgenes y rellenos por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ESTILOS DEL CUERPO - Fondo con gradiente y disposición principal */
+body {
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    background: linear-gradient(135deg, #052b4f 0%, #392356 50%, #143533 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    padding-top: 100px;
+}
+
+/* CONTENEDOR FLEXIBLE - Organiza elementos secundarios en filas/columnas */
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* ESTILOS DEL BOTÓN - Botones rojo con hover animado */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #f10606c9;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+}
+
+/* EFECTO HOVER - Elevación y cambio de gradiente al pasar el ratón */
+button:hover {
+    background: linear-gradient(135deg, #f10606c9, #ff0000ef);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* EFECTO CLICK - Regresa a posición normal al hacer click */
+button:active {
+    transform: translateY(0);
+}
+
+
+/* CONTENEDOR PRINCIPAL DE BÚSQUEDA - Diseño con gradiente rojo-cian */
+.search-container {
+    background: linear-gradient(135deg, #f10606c9, #47d7d2);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+    border: 5px solid #f10606c9;
+    min-width: 300px;
+}
+
+/* INPUT DE BÚSQUEDA - Campo de texto para buscar Pokémon */
+#buscarPokemon {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: #FFFFFF;
+    color: #333;
+    margin-bottom: 10px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#buscarPokemon::placeholder {
+    color: #999;
+}
+
+#buscarPokemon:focus {
+    outline: none;
+    box-shadow: 0 0 10px #d71f1fc9, inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ESTILOS DEL BOTÓN - Botones rojo con hover animado */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #f10606c9;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+}
+
+/* EFECTO HOVER - Elevación y cambio de gradiente al pasar el ratón */
+button:hover {
+    background: linear-gradient(135deg, #f10606c9, #ff0000ef);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* EFECTO CLICK - Regresa a posición normal al hacer click */
+button:active {
+    transform: translateY(0);
+}
+
+/* ============================================================================================= */
+/* BARRA DE NAVEGACIÓN - navbar.html o navegación general */
+/* ============================================================================================= */
+
+/* BARRA DE NAVEGACIÓN - Navbar fija en la parte superior */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #f10606c9, #da3f3fc9);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    z-index: 1000;
+    border-bottom: 5px solid #f14b4bc9;
+}
+
+/* ENLACES DE NAVEGACIÓN - Enlaces con fondo semitransparente */
+.navbar a {
+    color: #000;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+/* HOVER EN ENLACES - Efecto al pasar ratón sobre enlaces */
+.navbar a:hover {
+    background: rgba(255,255,255,0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* ENLACE ACTIVO - Resalta el enlace de página actual */
+.navbar a.active {
+    background: rgba(255,255,255,0.9);
+    border: 2px solid #000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* CONTENEDOR PRINCIPAL DE BÚSQUEDA - Diseño con gradiente rojo-cian */
+.search-container {
+    background: linear-gradient(135deg, #f10606c9, #47d7d2);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+    border: 5px solid #f10606c9;
+    min-width: 300px;
+}
+
+/* INPUT DE BÚSQUEDA - Campo de texto para buscar Pokémon */
+#buscarPokemon {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: #FFFFFF;
+    color: #333;
+    margin-bottom: 10px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#buscarPokemon::placeholder {
+    color: #999;
+}
+
+#buscarPokemon:focus {
+    outline: none;
+    box-shadow: 0 0 10px #d71f1fc9, inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* CONTENEDORES DE BÚSQUEDA - Búsqueda de movimientos e items */
+div:has(> #buscarMovimiento),
+div:has(> #buscarItem) {
+    background: linear-gradient(135deg, #f10606c9, #ef2e2ec9);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+    border: 5px solid #f10606c9;
+    min-width: 300px;
+}
+
+/* INPUTS DE BÚSQUEDA - Campo de texto para movimientos e items */
+#buscarMovimiento,
+#buscarItem {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: #FFFFFF;
+    color: #333;
+    margin-bottom: 10px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* PLACEHOLDER Y FOCUS - Estilos para inputs de movimientos e items */
+#buscarMovimiento::placeholder,
+#buscarItem::placeholder {
+    color: #f10606c9;
+}
+
+#buscarMovimiento:focus,
+#buscarItem:focus {
+    outline: none;
+    box-shadow: 0 0 10px #d71f1fc9, inset 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ============================================================================================= */
+/* MOVIMIENTOS - Movimientos/movimientos.html */
+/* ============================================================================================= */
+
+/* MOVIMIENTOS - Sección con listado de movimientos */
+#movimientos {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 4px solid #f10606c9;
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.2), transparent);
+    border-radius: 8px;
+}
+
+/* SECCIÓN DE MOVIMIENTOS - Panel con borde para movimientos del Pokémon */
+#movimientos-section {
+    background: linear-gradient(135deg, #f10606c9, #da3f3fc9 );
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    border: 8px solid #f14b4bc9;
+    color: #9b7171;
+    min-width: 350px;
+}
+
+/* TÍTULO H2 EN SECCIÓN DE MOVIMIENTOS - Encabezado del panel */
+#movimientos-section h2 {
+    font-size: 1.1em;
+    color: Black;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* CONTENEDOR DE MOVIMIENTOS - Panel con información de movimientos */
+#moves {
+    background: linear-gradient(135deg, #f10606c9, #da3f3fc9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    border: 8px solid #f14b4bc9;
+    min-width: 350px;
+    max-width: 800px;
+    color: #f10606;
+}
+
+/* SECCIONES DENTRO DE MOVIMIENTOS - Datos con transición */
+#moves div {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 4px solid #f10606c9;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* EFECTO HOVER EN MOVIMIENTOS - Resalta y anima al pasar ratón */
+#moves div:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-left: 6px solid #df2e2e;
+    transform: translateX(5px);
+}
+
+/* TÍTULOS H2 EN MOVIMIENTOS - Encabezados en blanco */
+#moves h2 {
+    font-size: 1em;
+    color: #000000;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* PÁRRAFOS EN MOVIMIENTOS - Texto claro con espaciado */
+#moves p {
+    font-size: 0.95em;
+    color: #000000;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+/* CONTENEDOR DE MOVIMIENTOS CON SCROLL - Listado scrolleable */
+.moves-container {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* LISTA DE MOVIMIENTOS - Sin viñetas de lista */
+#movesPokemon {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ELEMENTO DE MOVIMIENTO - Item individual con click interactivo */
+#movesPokemon .move-item {
+    cursor: pointer;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* EFECTO HOVER EN MOVIMIENTO - Elevación al pasar ratón */
+#movesPokemon .move-item:hover {
+    background: rgba(255,255,255,0.38);
+    transform: translateY(-2px);
+}
+
+/* NOMBRE DEL MOVIMIENTO - Texto en negrita */
+#movesPokemon .move-name {
+    display: inline;
+    font-weight: bold;
+    color: #08141d;
+}
+
+/* INFORMACIÓN DEL MOVIMIENTO - Detalles ocultos inicialmente */
+#movesPokemon .move-info {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: #ffffff
+}
+
+/* MOSTRAR INFO CUANDO ESTÁ ACTIVO - Detalles visibles al seleccionar */
+#movesPokemon .move-item.active .move-info {
+    display: block;
+}
