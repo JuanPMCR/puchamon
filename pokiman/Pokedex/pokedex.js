@@ -116,7 +116,7 @@ function renderPokemonList(pokemonArray) {
         const imgHtml = p.sprite = `<img src="${p.sprite}" alt="${p.name}" class="pokemon-thumb">`;
         
         //se hace la targeta del pokemon junto con un boton para mandarte a su pagina
-        return `<li class="pokemon-card" onclick="window.location.href='busqueda.html?pokemon=${encodeURIComponent(p.name)}'">
+        return `<li class="pokemon-card" onclick="window.location.href='../Busqueda/busqueda.html?pokemon=${encodeURIComponent(p.name)}'">
             ${imgHtml}
             <div class="pokemon-info">
                 <strong>${pos}. ${cap(p.name)}</strong>

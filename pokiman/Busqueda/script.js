@@ -1,4 +1,5 @@
 let currentPokemon = null;
+const TEAM_STORAGE_KEY = 'puchamon_team';
 
 window.addEventListener('DOMContentLoaded', () => {
     const pokemonQuery = new URLSearchParams(window.location.search).get('pokemon');
@@ -7,6 +8,48 @@ window.addEventListener('DOMContentLoaded', () => {
         fetchingPokemon(pokemonQuery.toLowerCase());
     }
 });
+
+//Equipos
+
+function getTeam() {
+    try {
+        const stored = localStorage.getItem(TEAM_STORAGE_KEY);
+        return stored ? JSON.parse(stored) : [];
+    } catch {
+        return [];
+    }
+}
+
+function saveTeam(team) {
+    localStorage.setItem(TEAM_STORAGE_KEY, JSON.stringify(team));
+}
+
+function addToTeam() {
+    if (!currentPokemon) return;
+    const team = getTeam();
+    if (team.some(p => p.id === currentPokemon.id)) {
+        showTeamMessage('Este Pokémon ya está en tu equipo.');
+        return;
+    }
+    if (team.length >= 6) {
+        showTeamMessage('El equipo ya tiene 6 Pokémon.');
+        return;
+    }
+    team.push({
+        id: currentPokemon.id,
+        name: currentPokemon.name,
+        types: currentPokemon.types.map(t => t.type.name),
+        sprite: currentPokemon.sprites.front_default
+    });
+    saveTeam(team);
+    showTeamMessage(`${currentPokemon.name} se agregó al equipo.`);
+}
+
+function updateTeamButton() {
+    const button = document.getElementById('btnAddTeam');
+    if (!button) return;
+    button.disabled = !currentPokemon;
+}
 
 //busqueda
 async function fetchingPokemon(pokemon) {
@@ -42,6 +85,7 @@ async function changePokemon(pokemon) {
         document.getElementById(id).innerHTML = elements[id];
     }
     document.getElementById('imgPokemon').src = pokemon.sprites.front_default;
+    updateTeamButton();
     await fetchEvolutions(pokemon.species.url);
 }
 
