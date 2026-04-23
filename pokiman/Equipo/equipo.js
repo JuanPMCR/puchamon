@@ -31,7 +31,7 @@ function displayTeam() {
             <div class="team-card-info">
                 <h2>${pokemon.name}</h2>
                 <p><strong>ID:</strong> ${pokemon.id}</p>
-                <p><strong>Tipos:</strong> ${pokemon.types.join(', ')}</p>
+                <p><strong>Tipos:</strong> ${pokemon.types.map(t => `<span class="type-badge type-${t.toLowerCase().replace(/\s+/g, '-')}">${cap(t)}</span>`).join('')}</p>
                 <button type="button" onclick="removeFromTeam(${index})">Eliminar</button>
             </div>
         </div>
@@ -52,4 +52,9 @@ function clearTeam() {
     if (!confirm('¿Deseas eliminar todo el equipo?')) return;
     saveTeam([]);
     displayTeam();
+}
+
+// Función para capitalizar texto
+function cap(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
 }

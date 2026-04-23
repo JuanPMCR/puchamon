@@ -110,7 +110,7 @@ function renderPokemonList(pokemonArray) {
         const pos = currentOffset + i + 1; 
         
         //se crean las clases para el tipo y aparezca ahi abajo
-        const typesHtml = p.types.map(t => `<span class="type-badge">${cap(t)}</span>`).join('');
+        const typesHtml = p.types.map(t => `<span class="type-badge type-${t.toLowerCase().replace(/\s+/g, '-')}">${cap(t)}</span>`).join('');
         
         //para el sprite
         const imgHtml = p.sprite = `<img src="${p.sprite}" alt="${p.name}" class="pokemon-thumb">`;

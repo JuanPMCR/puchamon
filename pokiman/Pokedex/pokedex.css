@@ -371,3 +371,24 @@ div:has(> #buscarItem) {
     color: #000;
     background: rgba(255, 255, 255, 0.9);
 }
+
+.type-badge.type-normal { background: #A8A77A; color: #000; }
+.type-badge.type-fire { background: #EE8130; color: #000; }
+.type-badge.type-water { background: #6390F0; color: #fff; }
+.type-badge.type-electric { background: #F7D02C; color: #000; }
+.type-badge.type-grass { background: #7AC74C; color: #000; }
+.type-badge.type-ice { background: #96D9D6; color: #000; }
+.type-badge.type-fighting { background: #C22E28; color: #fff; }
+.type-badge.type-poison { background: #A33EA1; color: #fff; }
+.type-badge.type-ground { background: #E2BF65; color: #000; }
+.type-badge.type-flying { background: #A98FF3; color: #000; }
+.type-badge.type-psychic { background: #F95587; color: #fff; }
+.type-badge.type-bug { background: #A6B91A; color: #000; }
+.type-badge.type-rock { background: #B6A136; color: #000; }
+.type-badge.type-ghost { background: #735797; color: #fff; }
+.type-badge.type-dragon { background: #6F35FC; color: #fff; }
+.type-badge.type-dark { background: #705746; color: #fff; }
+.type-badge.type-steel { background: #B7B7CE; color: #000; }
+.type-badge.type-fairy { background: #D685AD; color: #000; }
+.type-badge.type-shadow { background: #4B4453; color: #fff; }
+.type-badge.type-unknown { background: #9E9E9E; color: #000; }
