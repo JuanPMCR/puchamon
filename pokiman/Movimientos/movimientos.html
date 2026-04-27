@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../Movimientos/movimientos.css">
+        <title>Puchamon - Movimientos</title>
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="../Busqueda/busqueda.html">Pokémon</a>
+            <a href="../Pokedex/pokedex.html">Pokedex</a>            
+            <a href="movimientos.html" class="active">Movimientos</a>
+            <a href="../Items/items.html">Items</a>   
+            <a href="../Equipo/equipo.html">Equipo</a>              
+            <a href="../Login/login.html">Login</a>
+        </nav>
+        <div>
+            <input id="buscarMovimiento" type="text">
+            <button onclick="searchMoves()">Busca Movimientos</button>
+        </div>
+        <div id="moves">
+            <div>
+                <h2>Nombre: </h2>
+                <p id="nomMove"></p>
+            </div>
+            <div>
+                <h2>Tipo: </h2>
+                <p id="typeMove"></p>
+            </div>
+            <div>
+                <h2>Poder: </h2>
+                <p id="powerMove"></p>
+            </div>
+            <div>
+                <h2>PP: </h2>
+                <p id="ppMove"></p>
+            </div>
+            <div>
+                <h2>Precision: </h2>
+                <p id="accuracyMove"></p>
+            </div>
+            <div>
+                <h2>Prioridad: </h2>
+                <p id="priorityMove"></p>
+            </div>
+        </div>
+    </body>
+    <script src="movimientos.js"></script>
+</html>

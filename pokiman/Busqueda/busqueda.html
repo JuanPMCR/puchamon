@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../Busqueda/busqueda.css">
+        <title>Puchamon - Menu Principal</title>
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="busqueda.html" class="active">Pokémon</a>
+            <a href="../Pokedex/pokedex.html">Pokedex</a>            
+            <a href="../Movimientos/movimientos.html">Movimientos</a>
+            <a href="../Items/items.html">Items</a>     
+            <a href="../Equipo/equipo.html">Equipo</a>            
+            <a href="../Login/login.html">Login</a>
+        </nav>
+        <div>
+            <input id="buscarPokemon" type="text">
+            <button id="btnbuscar" onclick="searchPokemon()">Buscar</button>
+        </div>
+        <div class="content-wrapper">
+            <div id="pokemon">
+                <img id="imgPokemon">
+                <button id="shiny" onclick="toggleShiny()">Shiny</button>
+                <button id="Normal" onclick="toggleNormal()">Normal</button>
+                <button id="btnAddTeam" type="button" onclick="addToTeam()" disabled>Agregar al equipo</button>
+
+                <div>
+                    <h2>Nombre: </h2>
+                    <p id="nomPokemon"></p>
+                </div>
+                <div>
+                    <h2>Tipo: </h2>
+                    <p id="typePokemon"></p>
+                </div>
+                <div>
+                    <h2>Peso: </h2>
+                    <p id="weightPokemon"></p>
+                </div>
+                <div>
+                    <h2>Altura: </h2>
+                    <p id="heightPokemon"></p>
+                </div>
+                <div>
+                    <h2>ID: </h2>
+                    <p id="idPokemon"></p>
+                </div>
+                <div>
+                    <h2>Stats base:</h2>
+                    <p id="statsPokemon"></p>
+                </div>
+                <div>
+                    <h2>Habilidades: </h2>
+                    <p id="abilitiesPokemon"></p>
+                </div>
+                <div>
+                    <h2>Evoluciones: </h2>
+                    <p id="evolutionsPokemon"></p>
+                </div>
+            </div>
+            <div id="movimientos-section">
+                <h2>Movimientos: </h2>
+                <div class="moves-container">
+                    <ul id="movesPokemon"></ul>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>
